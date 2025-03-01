@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD de Produtos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <style>
+        
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #f44336; 
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .logout-btn:hover {
+            background-color: #e53935; 
+        }
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <div class="container">
+        <h1>Bem-vindo ao CRUD de Produtos</h1>
+
+        
+        <a href="{{ url_for('logout') }}">
+            <button class="logout-btn">Sair</button>
+        </a>
+
+        <div class="options-list">
+            <ul>
+                <li><a href="{{ url_for('criar') }}">Adicionar Produto</a></li>
+                <li><a href="{{ url_for('listar') }}">Ver Produtos</a></li>
+                <li><a href="{{ url_for('atualizar') }}">Atualizar Produto</a></li>
+                <li><a href="{{ url_for('deletar') }}">Remover Produto</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

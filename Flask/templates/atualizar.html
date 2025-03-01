@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Atualizar Produto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/atualizar.css') }}">
+</head>
+<body>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="flash-message {{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    
+
+    <div class="container">
+    
+        <div>
+            <h3>Produtos Disponíveis:</h3>
+            {% if produtos %}
+                <ul>
+                    {% for produto in produtos %}
+                        <li>ID: {{ produto[0] }} | Produto: {{ produto[1] }} | Quantidade: {{ produto[2] }} | Valor: R$ {{ "%.2f" % produto[3] }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Nenhum produto encontrado.</p>
+            {% endif %}
+        </div>
+
+        
+        <div>
+            <form method="POST">
+                <h1>Atualizar Produto</h1>
+                <label>ID do Produto:</label><br>
+                <input type="text" name="id"><br>
+                <label>Novo Nome do Produto:</label><br>
+                <input type="text" name="nome"><br>
+                <label>Nova Quantidade:</label><br>
+                <input type="text" name="quantidade"><br>
+                <label>Novo Valor:</label><br>
+                <input type="text" name="valor"><br>
+                <input type="submit" value="Atualizar"><br>
+                <a href="{{ url_for('home') }}">Voltar</a>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

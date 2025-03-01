@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #4CAF50;
+}
+
+.flash-message {
+    padding: 12px 20px; /* Mais espaço horizontal para ficar elegante */
+    margin: 10px; /* Espaço externo */
+    border-radius: 8px; /* Bordas mais arredondadas */
+    text-align: center;
+    font-weight: bold;
+    position: fixed; /* Continua fixo */
+    top: 10px; /* Distância do topo */
+    left: 10px; /* Distância da esquerda */
+    z-index: 1000; /* Acima de outros elementos */
+    width: 300px; /* Largura fixa */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    border: 2px solid; /* Borda inicial (cor será definida nas subclasses) */
+    transition: all 0.3s ease; /* Animação suave para hover ou outros efeitos */
+}
+
+.flash-message.success {
+    background-color: #dff0d8; /* Verde claro */
+    color: #3c763d; /* Verde escuro */
+    border-color: #3c763d; /* Borda verde escura */
+}
+
+.flash-message.success:hover {
+    background-color: #c8e6c9; /* Verde um pouco mais escuro no hover */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Sombra mais forte no hover */
+}
+
+.flash-message.error {
+    background-color: #f2dede; /* Vermelho claro */
+    color: #a94442; /* Vermelho escuro */
+    border-color: #a94442; /* Borda vermelha escura */
+}
+
+.flash-message.error:hover {
+    background-color: #ebcccc; /* Vermelho um pouco mais escuro no hover */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Sombra mais forte no hover */
+}
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+a {
+    display: block;
+    margin-top: 15px;
+    color: #00FFFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #45a049;
+}

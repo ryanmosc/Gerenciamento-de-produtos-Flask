@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Produtos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/listar.css') }}">
+    
+</head>
+<body>
+    <h1>Produtos Cadastrados</h1>
+    {% if produtos %}
+        <ul>
+        {% for produto in produtos %}
+            <li>ID: {{ produto[0] }} | Produto: {{ produto[1] }} | Quantidade: {{ produto[2] }} | Valor: R$ {{ "%.2f" % produto[3] }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum produto cadastrado.</p>
+    {% endif %}
+    <a href="{{ url_for('home') }}">Voltar</a>
+</body>
+</html>
