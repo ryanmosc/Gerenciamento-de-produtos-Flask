@@ -1,11 +1,9 @@
-/* Reset de margens e paddings padrão */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilos gerais do corpo da página */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f7fc;
@@ -16,7 +14,6 @@ body {
     color: #333;
 }
 
-/* Container do formulário de login */
 form {
     background-color: #fff;
     padding: 30px;
@@ -33,41 +30,41 @@ h1 {
 }
 
 .flash-message {
-    padding: 12px 20px; /* Mais espaço horizontal para ficar elegante */
-    margin: 10px; /* Espaço externo */
-    border-radius: 8px; /* Bordas mais arredondadas */
+    padding: 12px 20px;
+    margin: 10px;
+    border-radius: 8px;
     text-align: center;
     font-weight: bold;
-    position: fixed; /* Continua fixo */
-    top: 10px; /* Distância do topo */
-    left: 10px; /* Distância da esquerda */
-    z-index: 1000; /* Acima de outros elementos */
-    width: 300px; /* Largura fixa */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra suave */
-    border: 2px solid; /* Borda inicial (cor será definida nas subclasses) */
-    transition: all 0.3s ease; /* Animação suave para hover ou outros efeitos */
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 2px solid;
+    transition: all 0.3s ease;
 }
 
 .flash-message.success {
-    background-color: #dff0d8; /* Verde claro */
-    color: #3c763d; /* Verde escuro */
-    border-color: #3c763d; /* Borda verde escura */
+    background-color: #dff0d8;
+    color: #3c763d;
+    border-color: #3c763d;
 }
 
 .flash-message.success:hover {
-    background-color: #c8e6c9; /* Verde um pouco mais escuro no hover */
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Sombra mais forte no hover */
+    background-color: #c8e6c9;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .flash-message.error {
-    background-color: #f2dede; /* Vermelho claro */
-    color: #a94442; /* Vermelho escuro */
-    border-color: #a94442; /* Borda vermelha escura */
+    background-color: #f2dede;
+    color: #a94442;
+    border-color: #a94442;
 }
 
 .flash-message.error:hover {
-    background-color: #ebcccc; /* Vermelho um pouco mais escuro no hover */
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Sombra mais forte no hover */
+    background-color: #ebcccc;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 label {
