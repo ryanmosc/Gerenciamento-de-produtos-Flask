@@ -30,5 +30,5 @@ Este projeto é um CRUD de produtos implementado utilizando **Flask**, **MySQL**
 1. **Clonar o repositório:**
 
    ```bash
-   git clone https://github.com/SEU_USUARIO/nome-do-repositorio.git
-   cd nome-do-repositorio
+   git clone https://github.com/ryanmosc/Gerenciamento-de-produtos-Flask.git
+- **Ryan Moscardini**,ryanoliveiramosc.com.098@gmail.com.
