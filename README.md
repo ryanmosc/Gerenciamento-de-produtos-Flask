@@ -1,34 +1,39 @@
-# CRUD de Produtos com Flask e MySQL
+# README - Sistema de Vendas com Flask
 
-Este projeto é um CRUD de produtos implementado utilizando **Flask**, **MySQL** e **Flask-Login**. Ele permite realizar operações de criação, leitura, atualização e exclusão (CRUD) de produtos em um banco de dados MySQL, além de um sistema simples de login e registro de usuários.
+Este é um sistema de vendas simples desenvolvido com **Flask** e **MySQL**. O objetivo do sistema é gerenciar informações sobre produtos vendidos, com funcionalidades como cadastro de usuário, login, visualização de produtos, criação, atualização, exclusão e relatórios detalhados das vendas.
 
 ## Funcionalidades
 
-- **Login de usuários**: Autenticação de usuários via nome de usuário e senha, utilizando o Flask-Login.
-- **Cadastro de usuários**: Os usuários podem se cadastrar fornecendo um nome, e-mail e senha (que será armazenada de forma segura usando bcrypt).
-- **Gestão de produtos**: O administrador pode adicionar, listar, atualizar e remover produtos.
-- **Proteção por login**: As páginas de gerenciamento de produtos (adicionar, listar, atualizar, remover) só podem ser acessadas por usuários autenticados.
-- **Logout**: Permite que o usuário faça logout da aplicação.
+- **Cadastro de Usuários**: Permite o registro de novos usuários com verificação de e-mail e senha.
+- **Login de Usuários**: Possibilita a autenticação de usuários com senha criptografada.
+- **Gestão de Produtos**:
+  - **Criação de Produtos**: Permite adicionar novos produtos à base de dados.
+  - **Listagem de Produtos**: Exibe os produtos cadastrados no banco de dados.
+  - **Atualização de Produtos**: Permite editar as informações de um produto.
+  - **Exclusão de Produtos**: Permite remover produtos existentes.
+- **Relatórios**:
+  - Exibe relatórios detalhados com informações sobre os produtos vendidos, como média de preço, total de vendas e os produtos mais e menos vendidos.
+  - Possibilidade de exportar relatórios em formato CSV.
+- **Exportação de Relatórios**: Gera um arquivo CSV com os dados das vendas para exportação.
 
 ## Tecnologias Utilizadas
 
-- **Flask**: Framework web para construção do backend.
-- **MySQL**: Banco de dados relacional para armazenamento de usuários e produtos.
-- **bcrypt**: Biblioteca para hash de senhas.
-- **Flask-Login**: Extensão para gerenciamento de sessões de usuário.
-- **HTML/CSS**: Para a criação da interface do usuário.
+- **Flask**: Framework web para Python.
+- **MySQL**: Banco de dados relacional para armazenar informações de usuários e produtos.
+- **Flask-Login**: Extensão para gerenciar sessões de login de usuários.
+- **bcrypt**: Biblioteca para criptografia de senhas.
+- **Pandas**: Biblioteca para manipulação de dados, utilizada na geração de relatórios.
+- **HTML/CSS**: Linguagens para criação da interface do usuário.
 
-## Como Executar
+## Pré-requisitos
 
-### Pré-requisitos
+- Python 3.6 ou superior.
+- MySQL 5.7 ou superior.
 
-- Python 3.x
-- MySQL instalado e configurado
+## Instalação
 
-### Passos para rodar o projeto
+### Passo 1: Clone o repositório
 
-1. **Clonar o repositório:**
-
-   ```bash
-   git clone https://github.com/ryanmosc/Gerenciamento-de-produtos-Flask.git
-- **Ryan Moscardini**,ryanoliveiramosc.com.098@gmail.com.
+```bash
+git clone https://github.com/seu-usuario/sistema-de-vendas.git
+cd sistema-de-vendas
