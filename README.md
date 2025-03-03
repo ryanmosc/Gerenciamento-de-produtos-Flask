@@ -30,10 +30,10 @@ Este é um sistema de vendas simples desenvolvido com **Flask** e **MySQL**. O o
 - Python 3.6 ou superior.
 - MySQL 5.7 ou superior.
 
+## Ryan Moscardini | ryanoliveiramosc.com.098@gmail.com
+
 ## Instalação
 
-### Passo 1: Clone o repositório
-
 ```bash
-git clone https://github.com/seu-usuario/sistema-de-vendas.git
-cd sistema-de-vendas
+git clone https://github.com/ryanmosc/Gerenciamento-de-produtos-Flask
+cd Gerenciamento-de-produtos-Flask
