@@ -24,8 +24,8 @@ def get_db_connection():
     return mysql.connector.connect(
         host='localhost',
         user='root',
-        password='q1w2e3',
-        database='bdyoutube'
+        password='Sua senha',
+        database='Seu banco de dados'
     )
     
 
