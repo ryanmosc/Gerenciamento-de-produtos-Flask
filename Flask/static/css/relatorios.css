@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #2E7D32;
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #000000;
+    font-size: 24px;
+    margin: 20px 0 10px;
+    text-align: center;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.flash-message {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.flash-message.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.flash-message.error {
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+form input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form button {
+    background-color: #2E7D32;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #388E3C;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    color: #388E3C;
+    font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tr:hover {
+    background-color: #f1f1f1;
+}
+
+a {
+    color: #2E7D32;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+    display: block;
+}
+
+a:hover {
+    color: #388E3C;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .table, form {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .table th, .table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    form {
+        padding: 20px;
+    }
+}

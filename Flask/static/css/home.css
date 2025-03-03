@@ -1,10 +1,8 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 body {
     font-family: 'Arial', sans-serif;
@@ -15,9 +13,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to bottom right, #dff0d8, #dff0d8); 
+    background: linear-gradient(to bottom right, #dff0d8, #dff0d8);
 }
-
 
 .container {
     text-align: center;
@@ -29,13 +26,11 @@ body {
     max-width: 800px;
 }
 
-
 h1 {
     font-size: 36px;
     color: #333;
     margin-bottom: 20px;
 }
-
 
 p {
     font-size: 18px;
@@ -43,46 +38,44 @@ p {
     margin-bottom: 30px;
 }
 
-
 .flash-message {
-    padding: 12px 20px; 
-    margin: 10px; 
-    border-radius: 8px; 
+    padding: 12px 20px;
+    margin: 10px;
+    border-radius: 8px;
     text-align: center;
     font-weight: bold;
     position: fixed;
-    top: 10px; 
-    left: 10px; 
-    z-index: 1000; 
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
     width: 300px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border: 2px solid;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
 }
 
 .flash-message.success {
     background-color: #dff0d8;
-    color: #3c763d; 
-    border-color: #3c763d; 
+    color: #3c763d;
+    border-color: #3c763d;
 }
 
 .flash-message.success:hover {
-    background-color: #c8e6c9; 
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); 
+    background-color: #c8e6c9;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .flash-message.error {
-    background-color: #f2dede; 
-    color: #a94442; 
-    border-color: #a94442; 
+    background-color: #f2dede;
+    color: #a94442;
+    border-color: #a94442;
 }
 
 .flash-message.error:hover {
-    background-color: #ebcccc; 
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); 
+    background-color: #ebcccc;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos para a lista de opções */
 .options-list {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -117,7 +110,6 @@ ul li a {
 ul li:hover {
     background-color: #e7f7e5;
 }
-
 
 @media (max-width: 768px) {
     .container {

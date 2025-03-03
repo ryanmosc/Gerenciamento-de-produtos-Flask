@@ -3,6 +3,9 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import bcrypt
 import re
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+import pandas as pd
+from flask import make_response
+import io
 
 
 
@@ -223,7 +226,14 @@ def atualizar():
                 conexao.close()
                 return render_template('atualizar.html', produtos=produtos)
             
-            cursor.execute('UPDATE vendas SET nome_produto = %s, quantidade = %s, valor = %s WHERE idVendas = %s', (nome, quantidade, valor, id_update))
+            vendas = int(request.form['vendas'])
+            if vendas < 0:
+                flash('As vendas de produtos devem ser maior ou igual a 0!', 'error')
+                cursor.close()
+                conexao.close()
+                return render_template('atualizar.html', produtos=produtos)
+            
+            cursor.execute('UPDATE vendas SET nome_produto = %s, quantidade = %s, valor = %s, vendas = %s WHERE idVendas = %s', (nome, quantidade, valor, vendas, id_update))
             if cursor.rowcount == 0:
                 flash('Nenhum produto encontrado com esse ID!', 'error')
             else:
@@ -280,6 +290,89 @@ def deletar():
             flash('Erro: Insira um ID válido!', 'error')
     return render_template('deletar.html')
 
+
+@app.route('/relatorios', methods=['GET', 'POST'])
+@login_required
+def relatorios():
+    try:
+        conexao = get_db_connection()
+      
+        query = "SELECT idVendas, nome_produto, quantidade, valor, Vendas FROM vendas"
+        df = pd.read_sql(query, conexao)
+        conexao.close()
+
+        
+        if df.empty:
+            flash('Nenhum dado de vendas encontrado!', 'error')
+            return render_template('relatorios.html')
+
+        # Cálculos com Pandas
+        df['total_por_produto'] = df['Vendas'] * df['valor']  
+        media_valor = df['valor'].mean()  
+        total_vendas_geral = df['total_por_produto'].sum()  
+        produto_mais_vendido = df.loc[df['Vendas'].idxmax()]['nome_produto'] 
+        produto_menos_vendido = df.loc[df['Vendas'].idxmin()]['nome_produto']  
+
+  
+        produto_especifico = None
+        if request.method == 'POST':
+            id_produto = request.form.get('id_produto')
+            if id_produto:
+                try:
+                    id_produto = int(id_produto)
+                    produto_especifico = df[df['idVendas'] == id_produto].to_dict('records')
+                    if not produto_especifico:
+                        flash('Produto não encontrado!', 'error')
+                    else:
+                        produto_especifico = produto_especifico[0]
+                except ValueError:
+                    flash('ID inválido! Insira um número inteiro.', 'error')
+
+        
+        tabela_html = df.to_html(index=False, classes='table table-striped')
+
+        return render_template(
+            'relatorios.html',
+            tabela=tabela_html,
+            media_valor=media_valor,
+            total_vendas_geral=total_vendas_geral,
+            produto_mais_vendido=produto_mais_vendido,
+            produto_menos_vendido=produto_menos_vendido,
+            produto_especifico=produto_especifico
+        )
+    except Exception as e:
+        flash(f'Erro ao gerar relatórios: {e}', 'error')
+        return redirect(url_for('home'))
+
+@app.route('/exportar_relatorio')
+@login_required
+def exportar_relatorio():
+    try:
+        conexao = get_db_connection()
+        query = "SELECT idVendas, nome_produto, quantidade, valor, Vendas FROM vendas"
+        df = pd.read_sql(query, conexao)
+        conexao.close()
+
+        if df.empty:
+            flash('Nenhum dado para exportar!', 'error')
+            return redirect(url_for('relatorios'))
+
+       
+        df['total_por_produto'] = df['Vendas'] * df['valor']
+
+
+        csv_buffer = io.StringIO()
+        df.to_csv(csv_buffer, index=False, sep=';', encoding='utf-8-sig') 
+        csv_data = csv_buffer.getvalue()
+        csv_buffer.close()
+
+        response = make_response(csv_data)
+        response.headers['Content-Disposition'] = 'attachment; filename=relatorio_vendas.csv'
+        response.headers['Content-Type'] = 'text/csv'
+        return response
+    except Exception as e:
+        flash(f'Erro ao exportar relatório: {e}', 'error')
+        return redirect(url_for('relatorios'))
 @app.route('/logout')
 @login_required  
 def logout():

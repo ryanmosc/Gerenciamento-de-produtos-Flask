@@ -23,7 +23,7 @@
             {% if produtos %}
                 <ul>
                     {% for produto in produtos %}
-                        <li>ID: {{ produto[0] }} | Produto: {{ produto[1] }} | Quantidade: {{ produto[2] }} | Valor: R$ {{ "%.2f" % produto[3] }}</li>
+                        <li>ID: {{ produto[0] }} | Produto: {{ produto[1] }} | Quantidade: {{ produto[2] }} | Valor: R$ {{ "%.2f" % produto[3] }} | Vendas: {{produto[4]}}</li>
                     {% endfor %}
                 </ul>
             {% else %}
@@ -43,6 +43,8 @@
                 <input type="text" name="quantidade"><br>
                 <label>Novo Valor:</label><br>
                 <input type="text" name="valor"><br>
+                <label>Vendas:</label><br>
+                <input type="text" name="vendas"><br>
                 <input type="submit" value="Atualizar"><br>
                 <a href="{{ url_for('home') }}">Voltar</a>
             </form>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/relatorios.css') }}">
+    <title>Relatórios de Vendas</title>
+    <style>
+        .table { border-collapse: collapse; width: 80%; margin: 20px auto; }
+        .table th, .table td { border: 1px solid black; padding: 8px; text-align: center; }
+        .table th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Relatórios de Vendas e Métricas</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p style="color: {{ 'red' if category == 'error' else 'green' }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <h2>Resumo Geral</h2>
+    <p>Média de Valor Unitário: R${{ "%.2f" | format(media_valor) }}</p>
+    <p>Total de Vendas (Geral): R${{ "%.2f" | format(total_vendas_geral) }}</p>
+    <p>Produto Mais Vendido: {{ produto_mais_vendido }}</p>
+    <p>Produto Menos Vendido: {{ produto_menos_vendido }}</p>
+
+    <h2>Buscar Produto por ID</h2>
+    <form method="POST">
+        <label for="id_produto">ID do Produto:</label>
+        <input type="number" id="id_produto" name="id_produto" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if produto_especifico %}
+        <h2>Dados do Produto Selecionado</h2>
+        <p>ID: {{ produto_especifico['idVendas'] }}</p>
+        <p>Nome: {{ produto_especifico['nome_produto'] }}</p>
+        <p>Quantidade em Estoque: {{ produto_especifico['quantidade'] }}</p>
+        <p>Valor Unitário: R${{ "%.2f" | format(produto_especifico['valor']) }}</p>
+        <p>Vendas: {{ produto_especifico['Vendas'] }}</p>
+        <p>Total de Vendas: R${{ "%.2f" | format(produto_especifico['total_por_produto']) }}</p>
+    {% endif %}
+
+    <h2>Tabela de Vendas</h2>
+    {{ tabela | safe }}
+
+    <!-- Novo link para exportação -->
+    <h2>Exportar</h2>
+    <a href="{{ url_for('exportar_relatorio') }}">Baixar Relatório em CSV</a>
+
+    <p><a href="{{ url_for('home') }}">Voltar</a></p>
+</body>
+</html>
