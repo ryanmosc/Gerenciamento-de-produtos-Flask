@@ -20,7 +20,7 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 
-#Criando a conexão com o banco de dados
+
 def get_db_connection():
     return mysql.connector.connect(
         host='localhost',
@@ -29,9 +29,7 @@ def get_db_connection():
         database='bdyoutube'
     )
     
-#------------------------------------------------------------------------------------------------
 
-#Criação dos dados do usuario que esta utilizando no momento, para o mesmo não ter acesso a rotas protegidas
 class Usuario(UserMixin):
     def __init__(self, id):
         self.id = id
@@ -43,19 +41,17 @@ class Usuario(UserMixin):
 def load_user(user_id):
     return Usuario(user_id)
 
-#------------------------------------------------------------------------------------------------
 
-#------------------------------------------------------------------------------------------------
 
 @app.route('/', methods=['GET', 'POST'])
-#Função de login
+
 def login():
     if request.method == 'POST':
-        #Formulario para pegar senha 
+  
         nome_usuario = request.form['nome'].strip()
         senha = request.form['senha']
         
-        #Se não tiver nada nos campos solicitados mostar mensagem de erro e voltar para o login
+
         if not nome_usuario or not senha:
             flash('Nome e senha não podem estar vazios!', 'error')
             return render_template('login.html')
@@ -98,7 +94,7 @@ def login():
     
     return render_template('login.html')
 
-#------------------------------------------------------------------------------------------------
+
 
 @app.route('/registro', methods=['GET', 'POST'])
 def registro():
